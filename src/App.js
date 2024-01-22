@@ -22,7 +22,7 @@ function App() {
   return (
     <div className="App">
       <center>
-        <h1>Socket.io Chat App</h1>
+        <h1>Socket.io</h1>
         <input
           type="text"
           placeholder="message..."
