@@ -8,8 +8,14 @@ function App() {
   const [message, setMessage] = useState("");
   const [messageRecieved, setMessageRecieved] = useState("");
   const [messageSerder, setMessageSender] = useState("");
+  const [color, setColor] = useState("");
+
   const sendMessage = () => {
     socket.emit("message", { message: message });
+  };
+
+  const changeColor = () => {
+    socket.emit("bgcolor", { message: message });
   };
 
   useEffect(() => {
@@ -27,14 +33,21 @@ function App() {
           type="text"
           placeholder="message..."
           onChange={(event) => {
-            setMessage(event.target.value);
+            if (event.target.value === "blue") {
+              setColor(event.target.value);
+            } else {
+              setMessage(event.target.value);
+            }
           }}
         />
-        <button onClick={sendMessage}>Send</button>
+        <button onClick={sendMessage}>send message</button>
+        <button onClick={changeColor}>change color</button>
 
         <h2>
           {messageSerder}: {messageRecieved}
         </h2>
+        <p>color : {color}</p>
+        <p>message : {message}</p>
       </center>
     </div>
   );
